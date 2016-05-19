@@ -1,0 +1,26 @@
+{
+  "name": "cordova-plugin-pingwithhost",
+  "version": "1.0",
+  "description": "Cordova Ping Plugin With Host Name",
+  "cordova": {
+    "id": "cordova-plugin-pingwithhost",
+    "platforms": [
+      "android"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/navidmalekan/pingwithhost.git"
+  },
+  "bugs": {
+    "url": "https://github.com/navidmalekan/pingwithhost/issues"
+  },
+  "keywords": [
+    "cordova",
+    "ping",
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "author": "navidmlk",
+  "license": "MIT"
+}
