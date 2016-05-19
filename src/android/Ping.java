@@ -4,9 +4,11 @@ package org.tiste.cordova.ping;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.io.IOException;
 
 import org.apache.cordova.CordovaWebView;
+import org.apache.cordova.LOG;
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CordovaInterface;
@@ -41,9 +43,8 @@ public class Ping extends CordovaPlugin {
           String ip = args.getString(index);
           double result = doPing(ip);
           JSONObject r = new JSONObject();
-          InetAddress giriAddress = java.net.InetAddress.getByName(ip);
-          String address = giriAddress.getHostAddress();
-          r.put("target", address);
+
+          LOG.e("test", "test");
           if (result > 0) {
             r.put("status", "success");
             r.put("avg", result);
@@ -54,6 +55,15 @@ public class Ping extends CordovaPlugin {
             r.put("avg", 0);
             resultList.put(r);
             System.out.println("timeout \n");
+          }
+          try{
+              InetAddress giriAddress = java.net.InetAddress.getByName(ip);
+              String address = giriAddress.getHostAddress();
+              r.put("target", address);
+
+          }catch (Exception UnknownHostException) {
+        	  r.put("target", ip);
+              r.put("status", "invalid");
           }
         }
         callbackContext.success(resultList);
